@@ -1,28 +1,24 @@
-# ID3
+# Apriori
 
-## Introduction
+## Introducción
 
-El algoritmo ID3 comienza con el conjunto original S como nodo raíz. En cada iteración del algoritmo, itera a través de cada atributo no utilizado del conjunto S y calcula la entropía H(S) (o ganancia de información IG(A)) de ese atributo. Luego selecciona el atributo que tiene el valor de entropía más pequeño (o la ganancia de información más grande). Luego, el conjunto S se divide por el atributo seleccionado (por ejemplo, la edad es menor de 50 años, la edad está entre 50 y 100, la edad es mayor de 100) para producir subconjuntos de datos. El algoritmo continúa repitiéndose en cada subconjunto, considerando solo los atributos nunca antes seleccionados.
+El algoritmo Apriori fue el primer algoritmo que se propuso
+para la minería frecuente de conjuntos de elementos.
+Posteriormente fue mejorado por R Agarwal y R Srikant y llegó
+a ser conocido como Apriori. Este algoritmo utiliza dos pasos
+'unir' y 'podar' para reducir el espacio de búsqueda. Es un
+enfoque iterativo para descubrir los conjuntos de elementos
+más frecuentes. Los pasos explicados son:
+- Unir: Este paso genera (K + 1) conjunto de elementos a partir de K-conjuntos de elementos uniendo cada elemento consigo mismo.
+- Podar: Este paso analiza el recuento de cada elemento de la base de datos. Si el artículo candidato no cumple con el soporte mínimo, entonces se considera poco frecuente y, por lo tanto, se elimina. Este paso se realiza para reducir el tamaño de los conjuntos de elementos candidatos.
 
-## Data Set
+Con el algoritmo Apriori, los conjuntos de elementos
+candidatos se generan utilizando solo los conjuntos de
+elementos grandes del paso anterior. El conjunto de elementos
+grande del paso anterior se une consigo mismo para generar
+todos los conjuntos de elementos con un tamaño que es mayor
+en uno; a continuación, se elimina cada conjunto de elementos
+generado con un subconjunto que no sea grande. Los conjuntos
+de elementos restantes son los candidatos.
 
-El problema del clima es un conjunto de datos de juguete que usaremos para comprender cómo se construye un árbol de decisión. Proviene de Quinlan (1986), un artículo que analiza el algoritmo ID3 introducido en Quinlan (1979). Eso
-se reproduce con ligeras modificaciones en Witten y Frank (1999), y se refiere a las condiciones bajo las cuales se puede jugar algún juego hipotético al aire libre. Los datos se muestran a continuación:
-
-| Outlook | Temperature | Humidity |  Wind  | Play Ball? |
-|:-------:|:-----------:|:--------:|:------:|:----------:|
-|Sunny    | Hot         | High     | Weak   | No         |
-|Sunny    | Hot         | High     | Strong | No         |
-|Overcast | Hot         | High     | Weak   | Yes        |
-|Rain     | Mild        | High     | Weak   | Yes        |
-|Rain     | Cool        | Normal   | Weak   | Yes        |
-|Rain     | Cool        | Normal   | Strong | No         |
-|Overcast | Cool        | Normal   | Strong | Yes        |
-|Sunny    | Mild        | High     | Weak   | No         |
-|Sunny    | Cool        | Normal   | Weak   | Yes        |
-|Rain     | Mild        | Normal   | Weak   | Yes        |
-|Sunny    | Mild        | Normal   | Strong | Yes        |
-|Overcast | Mild        | High     | Strong | Yes        |
-|Overcast | Hot         | Normal   | Weak   | Yes        |
-|Rain     | Mild        | High     | Strong | No         |
 
